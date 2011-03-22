@@ -18,7 +18,7 @@ class PdfsController < ApplicationController
     respond_to do |format|
       
         format.html do
-          send_data output_file.to_s, :disposition => 'inline', :filename => output_file, :type => 'application/pdf', :x_sendfile => true
+          send_data output_file.to_s, :disposition => 'inline', :filename => output_filename, :type => 'application/pdf', :x_sendfile => true
       end
     end
     else
