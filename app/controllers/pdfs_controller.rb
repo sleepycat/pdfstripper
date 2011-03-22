@@ -8,11 +8,11 @@ class PdfsController < ApplicationController
   def create
     #look at content_type and original filename to determine if this is a PDF:
     if params[:pdfs][:pdf].content_type == 'application/pdf' and params[:pdfs][:pdf].original_filename.split('.')[-1] == 'pdf'
+    
+    output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
 
-    output_filename = "clean_#{params[:pdfs][:pdf].original_filename.to_s}"
-    
     %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=tmp/#{output_filename} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
-    
+
     output_file = File.read("tmp/#{output_filename}")
     
     respond_to do |format|
@@ -27,4 +27,11 @@ class PdfsController < ApplicationController
       redirect_to :action => 'index'
   end
  end
+  
+  private
+
+  def strip_chars filename
+    #remove problematic charaters from the filename
+    filename.gsub(/\'|\"|\(|\)/,'').gsub(' ', '_').to_s
+  end
 end
