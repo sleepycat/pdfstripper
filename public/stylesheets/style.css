@@ -1,0 +1,45 @@
+.blurb{
+  margin-left: auto;
+  margin-right: auto;
+  width:450px;
+  text-align: center;
+  font-family: 'Ubuntu', arial, serif;
+  color: #fff;
+}
+.notice{
+color: #fff;
+font-family: 'Ubuntu', arial, serif;
+}
+
+#content{
+  text-align: center;
+}
+#content form {
+padding-top: 1em;
+padding-bottom: 3em;
+}
+img{
+  padding-top: 4em;
+}
+#pdfs_pdf{
+ font-size:1.5em;
+}
+#pdfs_submit{
+  margin-top: 1em;
+  padding-top:0.2em;
+  padding-bottom: 0.2em;
+  padding-left:0.5em;
+  padding-right: 0.5em;
+}
+h1{
+  font-family: 'Ubuntu', arial, serif;
+  color: #fff;
+}
+body { 
+  background: url('/images/bg_tile.jpg') repeat scroll 0 0 transparent;
+  background-color: #fff; 
+  color: #333; 
+  margin-right: auto;
+  margin-left: auto;
+}
+
