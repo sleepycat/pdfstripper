@@ -1,0 +1,6 @@
+=form_for('pdfs', :html => {:multipart => true}) do |f|
+  
+  =f.label t('pdf.post')
+  =f.file_field "pdf"
+  .actions
+    = f.submit I18n.t('submit')

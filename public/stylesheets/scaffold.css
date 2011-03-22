@@ -1,0 +1,91 @@
+.notice{
+color: #fff;
+font-family: 'Ubuntu', arial, serif;
+}
+
+#content{
+  text-align: center;
+}
+#content form {
+padding-top: 1em;
+padding-bottom: 3em;
+}
+img{
+  padding-top: 4em;
+}
+#pdfs_pdf{
+ font-size:1.5em;
+}
+#pdfs_submit{
+  margin-top: 1em;
+  padding-top:0.2em;
+  padding-bottom: 0.2em;
+  padding-left:0.5em;
+  padding-right: 0.5em;
+}
+h1{
+  font-family: 'Ubuntu', arial, serif;
+  color: #fff;
+}
+body { 
+  background: url('/images/bg_tile.jpg') repeat scroll 0 0 transparent;
+  background-color: #fff; 
+  color: #333; 
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}

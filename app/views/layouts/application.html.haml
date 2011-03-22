@@ -1,0 +1,31 @@
+!!! 5
+%html
+  %head
+    %link{:href => "http://fonts.googleapis.com/css?family=Ubuntu", :rel => 'stylesheet', :type => 'text/css'}
+    %meta{:name => 'keywords', :content => 'PDF permissions remover'}
+    %meta{:name => 'description', :content => "Remove permissions and passwords from PDF files."}
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-22210190-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    %title
+      PDF password and permissions removal  
+    = stylesheet_link_tag 'scaffold'
+    = javascript_include_tag 'http://code.jquery.com/jquery.min.js'
+    = javascript_include_tag "application.js", "rails.js"
+    = csrf_meta_tag
+  %body
+    #content
+      =image_tag '60px-Gnome-mime-application-pdf.svg.png'
+      %h1 
+        =t('pdfs.index.title')
+      - if flash.notice
+        .notice= flash.notice
+      - if flash.alert
+        .notice.alert= flash.alert
+      =yield
