@@ -3,6 +3,7 @@
 
 en:
   not_a_pdf: This file is not recognizable as a PDF.
+  no_file: No file was selected.
   pdfs:
     index:
       title: PDF Permissions Remover
