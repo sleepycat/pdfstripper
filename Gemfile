@@ -7,6 +7,9 @@ gem 'rack', '1.2.1'
 gem 'haml'
 group :development, :test do
   gem 'ruby-debug'
+  gem 'rspec-rails'
+  gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
+  gem 'launchy'
   gem 'mongrel'
 end
 
