@@ -1,5 +1,5 @@
 class PdfsController < ApplicationController
-  
+
   def index
     #do nothing and render the default template
   end
@@ -7,16 +7,13 @@ class PdfsController < ApplicationController
   # POST /pdfs
   def create
     if params[:pdfs]
-      #look at content_type and original filename to determine if this is a PDF:
-      if params[:pdfs][:pdf].content_type == 'application/pdf' and params[:pdfs][:pdf].original_filename.split('.')[-1] == 'pdf'
-      
+      if is_pdf? params[:pdfs][:pdf]
       output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
 
       tempfile = Tempfile.new('pdf')
       %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
 
-      output_file = File.read("#{tempfile.path}")
-      
+      output_file = File.read(tempfile.path)
       respond_to do |format|
           format.html do
             send_data output_file.to_s, :disposition => 'inline', :filename => output_filename, :type => 'application/pdf', :x_sendfile => true
@@ -33,7 +30,7 @@ class PdfsController < ApplicationController
     render :action => 'index'
   end
  end
-  
+
   private
 
   def strip_chars filename
@@ -41,4 +38,7 @@ class PdfsController < ApplicationController
     filename.chomp(".pdf").gsub(' ', '_').gsub(/\W/,'') + ".pdf"
   end
 
+  def is_pdf? file
+     file.content_type == 'application/pdf' && file.original_filename.split('.')[-1] == 'pdf' ? true : false
+  end
 end
