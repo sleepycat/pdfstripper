@@ -2,13 +2,14 @@ source 'http://rubygems.org'
 
 gem 'jquery-rails', '>= 0.2.6'
 #Versions pegged to what DH can deal with.
-gem 'rails', '3.0.3'
-gem 'rack', '1.2.1'
-gem 'haml'
+gem 'rails', '3.1.6'
+gem 'rack'
+gem 'haml-rails'
+
 group :development, :test do
   gem 'ruby-debug'
   gem 'rspec-rails'
-  gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
+  gem 'capybara'
   gem 'launchy'
   gem 'mongrel'
 end
