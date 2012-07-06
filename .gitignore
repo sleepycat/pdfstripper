@@ -1,3 +1,4 @@
+config/ghostscript_config.yml
 *.swp
 .bundle
 db/*.sqlite3

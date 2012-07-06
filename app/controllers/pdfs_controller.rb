@@ -10,7 +10,7 @@ class PdfsController < ApplicationController
       if is_pdf? params[:pdfs][:pdf]
 
         tempfile = Tempfile.new('pdf')
-        %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
+        %x{ #{GHOSTSCRIPT_BIN} -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
 
         output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
 

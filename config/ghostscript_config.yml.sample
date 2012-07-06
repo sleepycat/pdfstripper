@@ -1,0 +1,6 @@
+development:
+  gs_path: /usr/bin/gs
+production:
+  gs_path: /usr/bin/gs
+test:
+  gs_path: /usr/bin/gs
