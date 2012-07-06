@@ -12,9 +12,10 @@ class PdfsController < ApplicationController
       
       output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
 
-      %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=tmp/#{output_filename} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
+      tempfile = Tempfile.new('pdf')
+      %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
 
-      output_file = File.read("tmp/#{output_filename}")
+      output_file = File.read("#{tempfile.path}")
       
       respond_to do |format|
           format.html do
