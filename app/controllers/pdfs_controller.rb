@@ -8,17 +8,17 @@ class PdfsController < ApplicationController
   def create
     if params[:pdfs]
       if is_pdf? params[:pdfs][:pdf]
-      output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
 
-      tempfile = Tempfile.new('pdf')
-      %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
+        tempfile = Tempfile.new('pdf')
+        %x{ gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=#{tempfile.path} -c .setpdfwrite -f #{params[:pdfs][:pdf].tempfile.path} }
 
-      output_file = File.read(tempfile.path)
-      respond_to do |format|
-          format.html do
-            send_data output_file.to_s, :disposition => 'inline', :filename => output_filename, :type => 'application/pdf', :x_sendfile => true
-        end
-      end
+        output_filename = "clean_#{strip_chars(params[:pdfs][:pdf].original_filename)}"
+
+        response.headers['Content-Length'] = tempfile.size.to_s
+        response.headers['Content-Type'] = "application/pdf"
+        response.headers['Content-Disposition'] = "inline; filename=#{output_filename}"
+        self.response_body = PdfStreamer.new tempfile
+
       else
        #this is not a pdf file. Let them know.
         flash.notice = t('not_a_pdf')
